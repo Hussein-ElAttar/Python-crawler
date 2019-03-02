@@ -30,7 +30,7 @@ class Image_Crawler(ABC):
         pass
     
 
-    def get_urls(self, num_of_urls=None):
+    def get_urls(self):
         return self.urls
 
 
@@ -77,7 +77,6 @@ class Yahoo_Image_Crawler(Image_Crawler):
         self.urls = []
         self.keyword = keyword.replace(" ", "%20")
         url      = yahoo_url.replace("{{keyword}}", self.keyword)
-        print(url)
         crawler  = self.crawl_page(url)
         lis  = crawler.findAll("li",{"class":"ld"})
         for li in lis:
